@@ -1,10 +1,9 @@
-window.onload = function() {
+window.onload = function () {
     $("#play-button").on("click", triviaGame.hidePlayButton);
     $("#play-button").on("click", triviaGame.drawQuestion);
     $("#play-button").on("click", triviaGame.drawAnswers);
     $("#play-button").on("click", triviaGame.timer);
     $("#play-button").on("click", triviaGame.drawScore);
-
 };
 
 var questions = [
@@ -37,22 +36,22 @@ var triviaGame = {
 
     time: 15,
 
-    drawQuestion: function() {
+    drawQuestion: function () {
         $("#question-box").text(questions[questionIndex]);
     },
 
-    drawScore: function() {
+    drawScore: function () {
         $("#score-board").text(`${correctCount} out of ${questionIndex} answered correctly`)
     },
 
-    drawCorrectAnswer: function() {
+    drawCorrectAnswer: function () {
         var correctAnswer = $("<div>");
-        correctAnswer.attr("id","answer-description");
+        correctAnswer.attr("id", "answer-description");
         correctAnswer.text(answerDescription[questionIndex]);
         $("#answer-box").append(correctAnswer);
     },
 
-    drawAnswers: function() {
+    drawAnswers: function () {
         for (i = 0; i < 4; i++) {
             var button = $("<button>");
             button.text(answers[questionIndex][i]);
@@ -64,14 +63,23 @@ var triviaGame = {
         $(".answer-button").on("click", triviaGame.evaluate);
     },
 
-    timer: function() {
+    timer: function () {
         intervalId = setInterval(triviaGame.count, 1000);
     },
 
-    count: function() {
+    count: function () {
 
         triviaGame.time = triviaGame.time - 1;
-        if (triviaGame.time < 0) {
+
+        if (triviaGame.time < 0 & questionIndex === questions.length - 1) {
+            clearInterval(intervalId);
+            triviaGame.drawCorrectAnswer();
+            setTimeout(function () {
+                triviaGame.endGame();
+            },
+                3000)
+        }
+        else if (triviaGame.time < 0) {
             triviaGame.nextQuestion();
         }
         else if (triviaGame.time < 10) {
@@ -82,31 +90,40 @@ var triviaGame = {
         }
     },
 
-    evaluate: function() {
+    evaluate: function () {
 
-        if (this.value === "1") {
-            $("#dialogue-box").text(`Great job!`);
+        if (questionIndex === questions.length - 1) {
+            clearInterval(intervalId);
             triviaGame.drawCorrectAnswer();
-            $(".answer-button").attr("class","hide")
+            setTimeout(function () {
+                triviaGame.endGame();
+            },
+                3000)
+        }
+
+        if (this.value === "1"  & questionIndex < questions.length -1) {
+            $("#dialogue-box").text(`Great job!`);
+            $(".answer-button").attr("class", "hide")
+            triviaGame.drawCorrectAnswer();
             correctCount++;
             questionIndex++;
             triviaGame.drawScore();
             triviaGame.nextQuestion();
         }
-        if (this.value === "0") {
+        if (this.value === "0" & questionIndex < questions.length -1) {
             $("#dialogue-box").text(`Sorry wrong answer!`);
+            $(".answer-button").attr("class", "hide");
             triviaGame.drawCorrectAnswer();
-            $(".answer-button").attr("class","hide");
             questionIndex++;
             triviaGame.drawScore();
             triviaGame.nextQuestion();
         }
     },
 
-    nextQuestion: function() {
+    nextQuestion: function () {
         clearInterval(intervalId);
         triviaGame.time = 15;
-        setTimeout(function() {
+        setTimeout(function () {
             $("#question-box").empty();
             $("#answer-box").empty();
             triviaGame.drawQuestion();
@@ -114,11 +131,22 @@ var triviaGame = {
             triviaGame.timer();
         },
             3000);
-
     },
 
-    hidePlayButton: function() {
+    hidePlayButton: function () {
         $("#play-button").attr("class", "hide");
+    },
+
+    endGame: function () {
+        $("#score-board").empty();
+        $("#question-box").empty();
+        $("#answer-box").empty();
+        $("#dialogue-box").html(`
+            <h2>Game Over</h2>
+            <p>You answered ${correctCount} out of ${questions.length} correctly.</p>
+            `
+        )
+        $("#play-button").attr("class","");
     },
 }
 
