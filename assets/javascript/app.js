@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function() {
     $("#play-button").on("click", triviaGame.hidePlayButton);
     $("#play-button").on("click", triviaGame.drawQuestion);
     $("#play-button").on("click", triviaGame.drawAnswers);
@@ -17,6 +17,11 @@ var answers = [
     ["one", "two", "three", "four"],
 ];
 
+var answerDescription = [
+    "Trump is the president of the United States.  Can you fucking believe it?!",
+    "There's four seasons in this country.",
+]
+
 var answerKey = [
     [1, 0, 0, 0],
     [0, 0, 0, 1],
@@ -32,15 +37,22 @@ var triviaGame = {
 
     time: 15,
 
-    drawQuestion: function () {
+    drawQuestion: function() {
         $("#question-box").text(questions[questionIndex]);
     },
 
-    drawScore: function () {
+    drawScore: function() {
         $("#score-board").text(`${correctCount} out of ${questionIndex} answered correctly`)
     },
 
-    drawAnswers: function () {
+    drawCorrectAnswer: function() {
+        var correctAnswer = $("<div>");
+        correctAnswer.attr("id","answer-description");
+        correctAnswer.text(answerDescription[questionIndex]);
+        $("#answer-box").append(correctAnswer);
+    },
+
+    drawAnswers: function() {
         for (i = 0; i < 4; i++) {
             var button = $("<button>");
             button.text(answers[questionIndex][i]);
@@ -52,11 +64,11 @@ var triviaGame = {
         $(".answer-button").on("click", triviaGame.evaluate);
     },
 
-    timer: function () {
+    timer: function() {
         intervalId = setInterval(triviaGame.count, 1000);
     },
 
-    count: function () {
+    count: function() {
 
         triviaGame.time = triviaGame.time - 1;
         if (triviaGame.time < 0) {
@@ -70,10 +82,11 @@ var triviaGame = {
         }
     },
 
-    evaluate: function () {
+    evaluate: function() {
 
         if (this.value === "1") {
             $("#dialogue-box").text(`Great job!`);
+            triviaGame.drawCorrectAnswer();
             $(".answer-button").attr("class","hide")
             correctCount++;
             questionIndex++;
@@ -82,17 +95,18 @@ var triviaGame = {
         }
         if (this.value === "0") {
             $("#dialogue-box").text(`Sorry wrong answer!`);
-            $(".answer-button").attr("class","hide")
+            triviaGame.drawCorrectAnswer();
+            $(".answer-button").attr("class","hide");
             questionIndex++;
             triviaGame.drawScore();
             triviaGame.nextQuestion();
         }
     },
 
-    nextQuestion: function () {
+    nextQuestion: function() {
         clearInterval(intervalId);
         triviaGame.time = 15;
-        setTimeout(function () {
+        setTimeout(function() {
             $("#question-box").empty();
             $("#answer-box").empty();
             triviaGame.drawQuestion();
@@ -103,7 +117,7 @@ var triviaGame = {
 
     },
 
-    hidePlayButton: function () {
+    hidePlayButton: function() {
         $("#play-button").attr("class", "hide");
     },
 }
