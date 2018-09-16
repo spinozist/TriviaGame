@@ -37,6 +37,7 @@ var triviaGame = {
     time: 15,
 
     drawQuestion: function () {
+        $('#drop-box').attr(`class`,`hide`);
         $(`#dialogue-box`).empty();
         $(`#question-box`).text(questions[questionIndex]);
     },
@@ -49,7 +50,8 @@ var triviaGame = {
         var correctAnswer = $(`<div>`);
         correctAnswer.attr(`id`, `answer-description`);
         correctAnswer.text(answerDescription[questionIndex-1]);
-        $(`#answer-box`).append(correctAnswer);
+        $(`#dialogue-box`).append(correctAnswer);
+        $('#drop-box').attr(`class`,``);
     },
 
     drawAnswers: function () {
@@ -76,6 +78,7 @@ var triviaGame = {
         if (triviaGame.time < 0 & questionIndex === questions.length - 1) {
             questionIndex++;
             clearInterval(intervalId);
+            $(`#dialogue-box`).attr(`class`,'background');
             $(`#dialogue-box`).text(`Times up!`);
             $(`.answer-button`).attr(`class`, `hide`);
             triviaGame.drawScore();
@@ -88,6 +91,7 @@ var triviaGame = {
         else if (triviaGame.time < 0) {
             questionIndex++;
             clearInterval(intervalId);
+            $(`#dialogue-box`).attr(`class`,'background');
             $(`#dialogue-box`).text(`Times up for this question!`);
             $(`.answer-button`).attr(`class`, `hide`);
             triviaGame.drawScore();
@@ -110,6 +114,7 @@ var triviaGame = {
 
             if (this.value === `1`) {
 
+                $(`#dialogue-box`).attr(`class`,'background');
                 $(`#dialogue-box`).text(`Great job!`);
                 $(`.answer-button`).attr(`class`, `hide`)
                 triviaGame.drawCorrectAnswer();
@@ -122,6 +127,7 @@ var triviaGame = {
                     3000)            }
 
             else if (this.value === `0`) {
+                $(`#dialogue-box`).attr(`class`,'background');
                 $(`#dialogue-box`).text(`Sorry wrong answer!`);
                 $(`.answer-button`).attr(`class`, `hide`);
                 triviaGame.drawCorrectAnswer();
@@ -136,6 +142,7 @@ var triviaGame = {
 
             if (this.value === `1`) {
 
+                $(`#dialogue-box`).attr(`class`,'background');
                 $(`#dialogue-box`).text(`Great job!`);
                 $(`.answer-button`).attr(`class`, `hide`)
                 triviaGame.drawCorrectAnswer();
@@ -145,8 +152,9 @@ var triviaGame = {
             } 
             
             else if (this.value === `0`) {
-
+                $(`#dialogue-box`).attr(`class`,'background');
                 $(`#dialogue-box`).text(`Sorry wrong answer!`);
+
                 $(`.answer-button`).attr(`class`, `hide`);
                 triviaGame.drawCorrectAnswer();
                 triviaGame.drawScore();
