@@ -16,8 +16,8 @@ var answers = [
 ];
 
 var answerKey = [
-    [true, false, false, false],
-    [false, false, false, true],
+    [1, 0, 0, 0],
+    [0, 0, 0, 1],
 ];
 
 var questionIndex = 0;
@@ -26,10 +26,7 @@ var intervalId;
 
 var triviaGame = {
 
-
-
-    time: 30,
-
+    time: 15,
 
     drawQuestion: function () {
         $("#question-box").text(questions[questionIndex]);
@@ -39,22 +36,23 @@ var triviaGame = {
         for (i = 0; i < 4; i++) {
             var button = $("<button>");
             button.text(answers[questionIndex][i]);
+            button.attr("class", "answer-button");
             button.attr("value", answerKey[questionIndex][i]);
             $("#answer-box").append(button)
-        }
+        };
+
+        $(".answer-button").on("click", triviaGame.evaluate);
     },
 
     timer: function () {
-        intervalId = setInterval(triviaGame.count, 500);
+        intervalId = setInterval(triviaGame.count, 1000);
     },
 
     count: function () {
+
         triviaGame.time = triviaGame.time - 1;
-        if (triviaGame.time < 1) {
-            clearInterval(intervalId);
-            $("#timer").text(`00:00`);
-            questionIndex++;
-            setTimeout(triviaGame.nextQuestion, 3000);
+        if (triviaGame.time < 0) {
+            triviaGame.nextQuestion();
         }
         else if (triviaGame.time < 10) {
             $("#timer").text(`00:0${triviaGame.time}`);
@@ -64,18 +62,40 @@ var triviaGame = {
         }
     },
 
-    nextQuestion: function() {
-        triviaGame.time = 30;
-        $("#question-box").empty();
-        $("#answer-box").empty();
-        triviaGame.drawQuestion();
-        triviaGame.drawAnswers();
-        triviaGame.timer();
+    evaluate: function () {
+
+        if (this.value === "1") {
+            $("#dialogue-box").text(`Great job!`);
+            $(".answer-button").attr("class","hide")
+            triviaGame.nextQuestion();
+        }
+        if (this.value === "0") {
+            $("#dialogue-box").text(`Sorry wrong answer!`);
+            triviaGame.nextQuestion();
+        }
+    },
+
+    nextQuestion: function () {
+        clearInterval(intervalId);
+        questionIndex++;
+        triviaGame.time = 15;
+        setTimeout(function () {
+            $("#question-box").empty();
+            $("#answer-box").empty();
+            triviaGame.drawQuestion();
+            triviaGame.drawAnswers();
+            triviaGame.timer();
+        },
+            3000);
+
     },
 
     hidePlayButton: function () {
         $("#play-button").attr("class", "hide");
     },
 }
+
+
+
 
 
