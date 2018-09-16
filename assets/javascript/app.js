@@ -1,8 +1,8 @@
 window.onload = function () {
     $("#play-button").on("click", triviaGame.hidePlayButton);
+    $("#play-button").on("click", triviaGame.timer);
     $("#play-button").on("click", triviaGame.drawQuestion);
     $("#play-button").on("click", triviaGame.drawAnswers);
-    $("#play-button").on("click", triviaGame.timer);
     $("#play-button").on("click", triviaGame.drawScore);
 };
 
@@ -72,16 +72,23 @@ var triviaGame = {
 
         triviaGame.time = triviaGame.time - 1;
 
-        if (triviaGame.time < 1 & questionIndex === questions.length) {
+        if (triviaGame.time < 0 & questionIndex === questions.length - 1) {
             questionIndex++;
             clearInterval(intervalId);
+            $("#dialogue-box").text(`Times up!`);
+            $(".answer-button").attr("class", "hide");
             triviaGame.drawCorrectAnswer();
             setTimeout(function () {
                 triviaGame.endGame();
             },
                 3000)
         }
-        else if (triviaGame.time < 1) {
+        else if (triviaGame.time < 0) {
+            questionIndex++;
+            clearInterval(intervalId);
+            $("#dialogue-box").text(`Times up for this question!`);
+            $(".answer-button").attr("class", "hide");
+            triviaGame.drawCorrectAnswer();
             triviaGame.nextQuestion();
         }
         else if (triviaGame.time < 10) {
@@ -147,13 +154,13 @@ var triviaGame = {
 
     nextQuestion: function () {
         clearInterval(intervalId);
-        triviaGame.time = 15;
+        triviaGame.time = 16;
         setTimeout(function () {
             $("#question-box").empty();
             $("#answer-box").empty();
+            triviaGame.timer();
             triviaGame.drawQuestion();
             triviaGame.drawAnswers();
-            triviaGame.timer();
         },
             3000);
     },
@@ -171,6 +178,7 @@ var triviaGame = {
             <p>You answered ${correctCount} out of ${questions.length} correctly.</p>  `
         );
         triviaGame.time = 15;
+        $("#timer").text("00:15");
         correctCount = 0;
         questionIndex = 0;
         $("#play-button").text("PLAY AGAIN");

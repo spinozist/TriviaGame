@@ -26,3 +26,36 @@ div {
     font-size: 24px;
 }
 
+#timer, 
+#score-board,
+#question-box,
+#dialogue-box,
+#answer-box {
+    padding: 15px;
+}
+
+#play-button {
+    padding: 10px;
+    background-color: rgb(36, 139, 199);
+    opacity: .75;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+#play-button:hover {
+    opacity: 1;
+}
+
+.answer-button {
+    padding: 5px;
+    background-color: rgb(131, 27, 201);
+    opacity: .75;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.answer-button:hover {
+    opacity: 1;
+}
