@@ -7,24 +7,24 @@ window.onload = function () {
 };
 
 var questions = [
-    `Who is the dumbass president?`,
-    `How many seasons are there?`,
+    `assets/images/paul-manifort.jpg`,
+    `assets/images/michael-cohen.jpg`,
 ];
 
 var answers = [
-    [`Trump`, `Clinton`, `FDR`, `David Duke`],
-    [`one`, `two`, `three`, `four`],
+    [`Paul Manifort`, `Michael Cohen`, `Mike Pence`, `David Duke`],
+    [`Chuck Grassley`, `Joe Arpaio`, `Harvey Weinstein`, `Michael Cohen`],
 ];
-
-var answerDescription = [
-    `Trump is the president of the United States.  Can you fucking believe it?!`,
-    `There's four seasons in this country.`,
-]
 
 var answerKey = [
     [1, 0, 0, 0],
     [0, 0, 0, 1],
 ];
+
+var answerDescription = [
+    `That is Paul Manifort.`,
+    `That is Michael Cohen.`,
+]
 
 var questionIndex = 0;
 
@@ -39,7 +39,9 @@ var triviaGame = {
     drawQuestion: function () {
         $('#drop-box').attr(`class`,`hide`);
         $(`#dialogue-box`).empty();
-        $(`#question-box`).text(questions[questionIndex]);
+        var image = $(`<img>`);
+        image.attr(`src`, questions[questionIndex])
+        $(`#question-box`).html(image);
     },
 
     drawScore: function () {
@@ -68,6 +70,8 @@ var triviaGame = {
     },
 
     timer: function () {
+        $(`#timer`).text(`00:15`)
+                    .attr(`class`,``);
         intervalId = setInterval(triviaGame.count, 1000);
     },
 
@@ -189,11 +193,11 @@ var triviaGame = {
             <p>You answered ${correctCount} out of ${questions.length} correctly.</p>  `
         );
         triviaGame.time = 15;
-        $(`#timer`).text(`00:15`);
         correctCount = 0;
         questionIndex = 0;
         $(`#play-button`).text(`PLAY AGAIN`);
         $(`#play-button`).attr(`class`, ``);
+        $(`#timer`).attr(`class`,`hide`);
         $(`#answer-box`).attr(`class`,`hide`);
 
     },

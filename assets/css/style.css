@@ -4,15 +4,22 @@ body {
 }
 
 .main-container {
-    opacity: .95;
-    width: 60%;
+    opacity: .9;
+    width: 50%;
     margin: auto;
     padding: 10px;
-    background-color: darkcyan;
+    background-color: black;
     border-radius: 10px;
     position: relative;
     top: 20%;
 
+}
+
+img {
+    background-color: black;
+    opacity: 1;
+    width: 90%;
+    margin-top: -40px;
 }
 
 .hide {
@@ -21,11 +28,15 @@ body {
 
 #timer {
     font-size: 40px;
-    color: greenyellow
+    color: rgb(236, 174, 40);background-color: black;
+    opacity: .9;
+    width: 10%;
+    border-radius: 5px;
+    margin: 10px auto auto auto;
 }
 
 div {
-    color: white;
+    color: beige;
     font-size: 24px;
 }
 
@@ -37,7 +48,7 @@ div {
 #dialogue-box,
 #answer-box,
 #correct-answer {
-    padding: 15px;
+    padding: 10px;
 }
 
 #game-logo {
@@ -55,7 +66,7 @@ div {
 
 #dialogue-box {
     font-size: 28px;
-    color: darkcyan;
+    color: beige;
 }
 
 #answer-box {
@@ -91,7 +102,7 @@ div {
     border-color: blueviolet;
     opacity: .75;
     color: white;
-    font-size: 20px;
+    font-size: 24px;
     border-radius: 5px;
     margin: 10px auto 0px auto;
     
@@ -108,7 +119,8 @@ div {
     width: 40%;
     margin: auto;
     padding: 10px;
-    background-color: beige;
+    opacity: .9;
+    background-color: darkslategrey;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     position: relative;
@@ -116,6 +128,6 @@ div {
 }
 
 #answer-description {
-    color: darkcyan;
+    color: beige;
     font-size: 20px;
 }
