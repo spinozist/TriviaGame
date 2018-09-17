@@ -45,7 +45,11 @@ var triviaGame = {
     },
 
     drawScore: function () {
-        $(`#score-board`).text(`${correctCount} out of ${questionIndex} answered correctly`)
+        var es = "es";
+        if (questionIndex === 1) {
+            es = "";
+        };
+        $(`#score-board`).text(`You identified ${correctCount} out of ${questionIndex} witch${es}.`)
     },
 
     drawCorrectAnswer: function () {
@@ -190,7 +194,7 @@ var triviaGame = {
         $(`#answer-box`).empty();
         $(`#dialogue-box`).html(`
             <h2>Game Over</h2>
-            <p>You answered ${correctCount} out of ${questions.length} correctly.</p>  `
+            <p>You identified ${correctCount} out of ${questions.length} witches.</p>  `
         );
         triviaGame.time = 15;
         correctCount = 0;

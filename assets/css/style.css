@@ -1,5 +1,6 @@
 body {
-    background-image: url("https://cdn.wallpaperdirect.com/shared-assets/images/products/082233full.jpg");
+    /* background-image: url("https://cdn.wallpaperdirect.com/shared-assets/images/products/082233full.jpg"); */
+    background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/B-wmtY8xinajljp5/looping-animation-of-black-white-and-gray-vertical-lines-oscillating_bwg-2l8a8__F0000.png);
     text-align: center;
 }
 
@@ -28,11 +29,13 @@ img {
 
 #timer {
     font-size: 40px;
-    color: rgb(236, 174, 40);background-color: black;
+    color: rgb(236, 174, 40);
+    background-color: black;
     opacity: .9;
     width: 10%;
     border-radius: 5px;
-    margin: 10px auto auto auto;
+    margin: -10px auto auto auto;
+
 }
 
 div {
@@ -64,6 +67,10 @@ div {
     font-style: bold;
 }
 
+#answer-box {
+    margin-top: -20px;
+}
+
 #dialogue-box {
     font-size: 28px;
     color: beige;
@@ -80,12 +87,14 @@ div {
 
 #play-button {
     padding: 10px;
-    background-color: rgb(36, 139, 199);
+    background-color: darkslategrey;
     opacity: .75;
     color: white;
     font-size: 20px;
     border-radius: 5px;
     border-color: none;
+    width: 150px;
+
 }
 
 #play-button:hover {
@@ -98,9 +107,9 @@ div {
 .answer-button {
     width: 80%;
     padding: 5px;
-    background-color: rgb(131, 27, 201);
-    border-color: blueviolet;
-    opacity: .75;
+    background-color: darkslategrey;
+    border-color: darkslategrey;
+    opacity: .8;
     color: white;
     font-size: 24px;
     border-radius: 5px;
@@ -123,8 +132,6 @@ div {
     background-color: darkslategrey;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    position: relative;
-    top: 20%;
 }
 
 #answer-description {
