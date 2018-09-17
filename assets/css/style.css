@@ -138,3 +138,27 @@ div {
     color: beige;
     font-size: 20px;
 }
+
+@media only screen and (max-width: 750px) {
+    .main-container {
+        width: 95%;
+    }
+
+    #timer {
+        font-size: 30px;
+        width: 50%;
+    }
+
+    #answer-box {
+        width: 95%;
+    }
+
+    #drop-box {
+        width: 80%;
+    }
+
+    #game-logo {
+        font-size: 40px;
+    }
+
+}
