@@ -22,8 +22,8 @@ var answerKey = [
 ];
 
 var answerDescription = [
-    `This witch is Paul Manafort,<br/>Trump’s former campaign chair!`,
-    `This witch is Michael Cohen,<br/>Trump’s former lawyer !`,
+    `This witch is Paul Manafort, Trump’s former campaign chair!`,
+    `This witch is Michael Cohen, Trump’s former lawyer !`,
 ]
 
 var answerImage = [
@@ -42,9 +42,14 @@ var triviaGame = {
     time: 15,
 
     drawQuestion: function () {
+        $(`#play-button`).empty()
+            .attr(`class`,`hide`);
         $('#drop-box').attr(`class`,`hide`);
-        $(`#dialogue-box`).empty();
-        $(`#question-box`).html(questions[questionIndex]);
+        $(`#dialogue-box`).text(`Which witch is this?`)
+            .attr(`class`,``);
+        $(`#drop-box`).empty();
+        $(`#question-box`).html(questions[questionIndex])
+                        .attr(`class`,``);
     },
 
     drawScore: function () {
@@ -53,6 +58,7 @@ var triviaGame = {
             es = "";
         };
         $(`#score-board`).text(`You identified ${correctCount} out of ${questionIndex} witch${es}.`)
+                        .attr(`class`,``);
     },
 
     drawCorrectAnswer: function () {
@@ -62,7 +68,7 @@ var triviaGame = {
                     .text(answerDescription[questionIndex-1]);
         correctImage.attr('src',answerImage[questionIndex-1]);
         $(`#dialogue-box`).append(correctAnswer);
-        $(`#dialogue-box`).append(correctImage);
+        $(`#drop-box`).append(correctImage);
         $('#drop-box').attr(`class`,``);
     },
 
@@ -105,7 +111,6 @@ var triviaGame = {
         else if (triviaGame.time < 0) {
             questionIndex++;
             clearInterval(intervalId);
-            $(`#dialogue-box`).attr(`class`,'background');
             $(`#dialogue-box`).text(`Times up for this question!`);
             $(`.answer-button`).attr(`class`, `hide`);
             triviaGame.drawScore();
@@ -127,8 +132,6 @@ var triviaGame = {
         if (questionIndex === questions.length) {
 
             if (this.value === `1`) {
-
-                $(`#dialogue-box`).attr(`class`,'background');
                 $(`#dialogue-box`).text(`Great job!`);
                 $(`.answer-button`).attr(`class`, `hide`)
                 triviaGame.drawCorrectAnswer();
@@ -141,7 +144,6 @@ var triviaGame = {
                     3000)            }
 
             else if (this.value === `0`) {
-                $(`#dialogue-box`).attr(`class`,'background');
                 $(`#dialogue-box`).text(`Sorry wrong answer!`);
                 $(`.answer-button`).attr(`class`, `hide`);
                 triviaGame.drawCorrectAnswer();
@@ -156,7 +158,6 @@ var triviaGame = {
 
             if (this.value === `1`) {
 
-                $(`#dialogue-box`).attr(`class`,'background');
                 $(`#dialogue-box`).text(`Great job!`);
                 $(`.answer-button`).attr(`class`, `hide`)
                 triviaGame.drawCorrectAnswer();
@@ -166,9 +167,7 @@ var triviaGame = {
             } 
             
             else if (this.value === `0`) {
-                $(`#dialogue-box`).attr(`class`,'background');
                 $(`#dialogue-box`).text(`Sorry wrong answer!`);
-
                 $(`.answer-button`).attr(`class`, `hide`);
                 triviaGame.drawCorrectAnswer();
                 triviaGame.drawScore();
@@ -190,13 +189,13 @@ var triviaGame = {
             5000);
     },
 
-    hidePlayButton: function () {
-        $(`#play-button`).attr(`class`, `hide`);
-    },
-
     endGame: function () {
+        $(`#timer`).empty();
+        $(`#drop-box`).empty()
+            .attr(`class`,`hide`);
         $(`#score-board`).empty();
-        $(`#question-box`).empty();
+        $(`#question-box`).empty()
+            .attr(`class`,`hide`);
         $(`#answer-box`).empty();
         $(`#dialogue-box`).html(`
             <h2>Game Over</h2>

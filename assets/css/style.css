@@ -11,16 +11,14 @@ body {
     padding: 10px;
     background-color: black;
     border-radius: 10px;
-    position: relative;
-    top: 20%;
+}
 
+h2 {
+    line-height: 30px;
 }
 
 img {
-    background-color: black;
-    opacity: 1;
-    width: 90%;
-    margin-top: -40px;
+    width: 95%;
 }
 
 .hide {
@@ -28,21 +26,9 @@ img {
 }
 
 #timer {
-    font-size: 40px;
+    font-size: 60px;
     color: rgb(236, 174, 40);
-    background-color: black;
-    opacity: .9;
-    width: 10%;
-    border-radius: 5px;
-    margin: -10px auto auto auto;
-
 }
-
-div {
-    color: beige;
-    font-size: 24px;
-}
-
 
 #game-logo,
 #timer, 
@@ -55,12 +41,13 @@ div {
 }
 
 #game-logo {
-    font-size: 60px;
+    font-size: 70px;
     color: orange
 }
 
 #score-board {
-    font-size: 20px;
+    color: beige;
+    font-size: 24px;
 }
 
 #question-box {
@@ -69,24 +56,21 @@ div {
     border-radius: 5px;
     background-color: beige;
     color: darkslategrey;
-    margin: auto;
+    margin: -20px auto auto auto;
     padding: 5px;
-}
-
-#answer-box {
-    margin-top: -20px;
 }
 
 #dialogue-box {
     font-size: 28px;
-    color: beige;
+    color: orange;
+    margin-top: 10px;
+    margin-bottom: -50px;
 }
 
 #answer-box {
     width: 60%;
     margin: auto;
     margin-bottom: 10px;
-    /* opacity: .75; */
     border-radius: 10px;
 }
 
@@ -99,6 +83,7 @@ div {
     border-radius: 5px;
     border-color: none;
     width: 150px;
+    margin: 40px 0px 30px 0px;
 
 }
 
@@ -116,7 +101,7 @@ div {
     border-color: darkslategrey;
     opacity: .8;
     color: white;
-    font-size: 24px;
+    font-size: 28px;
     border-radius: 5px;
     margin: 10px auto 0px auto;
     
@@ -130,28 +115,31 @@ div {
 
 
 #drop-box {
-    width: 40%;
+    width: 48%;
     margin: auto;
     padding: 10px;
     opacity: .9;
-    background-color: darkslategrey;
+    background-color: beige;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    color: darkslategrey;
+    font-size: 30px;
 }
 
+
+
 #answer-description {
-    color: beige;
+    color: orange;
     font-size: 20px;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 780px) {
     .main-container {
         width: 95%;
     }
 
     #timer {
-        font-size: 30px;
-        width: 50%;
+        font-size: 50px;
     }
 
     #answer-box {
@@ -159,11 +147,11 @@ div {
     }
 
     #drop-box {
-        width: 80%;
+        width: 95%;
     }
 
     #game-logo {
-        font-size: 40px;
+        font-size: 55px;
     }
 
 }
