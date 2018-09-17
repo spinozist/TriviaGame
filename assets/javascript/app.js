@@ -7,8 +7,8 @@ window.onload = function () {
 };
 
 var questions = [
-    `assets/images/paul-manifort.jpg`,
-    `assets/images/michael-cohen.jpg`,
+    `[This witch] was indicted on a total of 25 different counts [...], related mainly to his past work for Ukrainian politicians and his finances. He had two trials scheduled, and the first ended in a conviction on eight counts of financial crimes. To avert the second trial, [he] struck a plea deal [...] in September 2018.`,
+    `[This witch] pleaded guilty to 8 counts — tax and bank charges, related to his finances and taxi business, and campaign finance violations, related to hush money payments to women who alleged affairs with Donald Trump.`,
 ];
 
 var answers = [
@@ -22,8 +22,13 @@ var answerKey = [
 ];
 
 var answerDescription = [
-    `That is Paul Manifort.`,
-    `That is Michael Cohen.`,
+    `This witch is Paul Manafort,<br/>Trump’s former campaign chair!`,
+    `This witch is Michael Cohen,<br/>Trump’s former lawyer !`,
+]
+
+var answerImage = [
+    `assets/images/paul-manifort.jpg`,
+    `assets/images/michael-cohen.jpg`,
 ]
 
 var questionIndex = 0;
@@ -39,9 +44,7 @@ var triviaGame = {
     drawQuestion: function () {
         $('#drop-box').attr(`class`,`hide`);
         $(`#dialogue-box`).empty();
-        var image = $(`<img>`);
-        image.attr(`src`, questions[questionIndex])
-        $(`#question-box`).html(image);
+        $(`#question-box`).html(questions[questionIndex]);
     },
 
     drawScore: function () {
@@ -54,9 +57,12 @@ var triviaGame = {
 
     drawCorrectAnswer: function () {
         var correctAnswer = $(`<div>`);
-        correctAnswer.attr(`id`, `answer-description`);
-        correctAnswer.text(answerDescription[questionIndex-1]);
+        var correctImage = $(`<img>`);
+        correctAnswer.attr(`id`, `answer-description`)
+                    .text(answerDescription[questionIndex-1]);
+        correctImage.attr('src',answerImage[questionIndex-1]);
         $(`#dialogue-box`).append(correctAnswer);
+        $(`#dialogue-box`).append(correctImage);
         $('#drop-box').attr(`class`,``);
     },
 

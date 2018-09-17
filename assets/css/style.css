@@ -51,11 +51,12 @@ div {
 #dialogue-box,
 #answer-box,
 #correct-answer {
-    padding: 10px;
+    padding: 5px;
 }
 
 #game-logo {
     font-size: 60px;
+    color: orange
 }
 
 #score-board {
@@ -63,8 +64,13 @@ div {
 }
 
 #question-box {
-    font-size: 30px;
-    font-style: bold;
+    font-size: 20px;
+    width: 98%;
+    border-radius: 5px;
+    background-color: beige;
+    color: darkslategrey;
+    margin: auto;
+    padding: 5px;
 }
 
 #answer-box {
@@ -79,7 +85,6 @@ div {
 #answer-box {
     width: 60%;
     margin: auto;
-    /* background-color: aquamarine; */
     margin-bottom: 10px;
     /* opacity: .75; */
     border-radius: 10px;
