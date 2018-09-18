@@ -96,7 +96,7 @@ img {
     border-radius: 5px;
     border-color: none;
     width: 150px;
-    margin: 30px 0px 30px 0px;
+    margin: 20px 0px 30px 0px;
 
 }
 
@@ -139,7 +139,7 @@ img {
 
 #answer-description {
     margin-top: 10px;
-    margin-bottom: -30px;
+    margin-bottom: -5px;
     padding: 5px;
     border-radius: 5px;
     color: black;
@@ -164,6 +164,7 @@ img {
     }
 
     #play-button {
+        margin-top: 20px;
         opacity: 1;
         border-color: orange;
         color: orange;
@@ -188,7 +189,7 @@ img {
     }
 
     #drop-box {
-        width: 95%;
+        width: 85%;
     }
 
     #game-name {

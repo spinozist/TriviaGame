@@ -66,7 +66,8 @@ var triviaGame = {
         $(`#game-name`).attr(`class`,`hide`)
             .empty();
         $(`#logo`).attr(`class`,`hide`)
-                .attr(`src`,``);
+            .attr(`src`,``)
+            .empty();
         $(`#play-button`).empty()
             .attr(`class`,`hide`);
         $('#drop-box').attr(`class`,`hide`);
