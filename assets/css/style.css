@@ -37,7 +37,7 @@ img {
     margin-top: -30px;
 }
 
-#game-logo,
+#game-name,
 #timer, 
 #score-board,
 #question-box,
@@ -47,8 +47,8 @@ img {
     padding: 5px;
 }
 
-#game-logo {
-    font-size: 70px;
+#game-name {
+    font-size: 80px;
     color: orange
 }
 
@@ -68,8 +68,9 @@ img {
 }
 
 #dialogue-box {
-    font-size: 32px;
+    font-size: 34px;
     color: orange;
+    font-style: bold;
     margin-top: 10px;
     margin-bottom: -50px;
 }
@@ -137,8 +138,13 @@ img {
 
 
 #answer-description {
-    color: orange;
-    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: -30px;
+    padding: 5px;
+    border-radius: 5px;
+    color: black;
+    background-color: orange;
+    font-size: 24px;
 }
 
 @media only screen and (max-width: 780px) {

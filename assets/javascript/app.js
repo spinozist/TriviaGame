@@ -60,7 +60,7 @@ var intervalId;
 
 var triviaGame = {
 
-    time: 15,
+    time: 20,
 
     drawQuestion: function () {
         $(`#logo`).attr(`class`,`hide`)
@@ -85,6 +85,8 @@ var triviaGame = {
     },
 
     drawCorrectAnswer: function () {
+        $(`#question-box`).empty()
+            .attr(`class`, `hide`);
         var correctAnswer = $(`<div>`);
         var correctImage = $(`<img>`);
         correctAnswer.attr(`id`, `answer-description`)
@@ -201,7 +203,7 @@ var triviaGame = {
 
     nextQuestion: function () {
         clearInterval(intervalId);
-        triviaGame.time = 16;
+        triviaGame.time = 21;
         setTimeout(function () {
             $(`#question-box`).empty();
             $(`#answer-box`).empty();
@@ -227,7 +229,7 @@ var triviaGame = {
             <h2>Game Over</h2>
             <p>You identified ${correctCount} out of ${questions.length} witches.</p>  `
         );
-        triviaGame.time = 15;
+        triviaGame.time = 20;
         correctCount = 0;
         questionIndex = 0;
         $(`#play-button`).text(`PLAY AGAIN`);
