@@ -34,12 +34,12 @@ var answerKey = [
 ];
 
 var answerDescription = [
-    `This witch is Paul Manafort, Trump’s former campaign chair!`,
-    `This witch is Michael Cohen, Trump’s former lawyer !`,
-    'This coven of witches is a group of 12 GRU officers working at the behest of the Kremlin.',
-    `This witch is George Papadopoulus, former foreign policy advisory to Trump's 2016 campaign.`,
-    `This witch is Rick Gates, old pal of Manafort who flipped on him in Federal Court`,
-    `This gaggle of witches,often described as a "Russian Troll Farm", goes by the official name the Internet Research Agency.`,
+    `This witch is <u>Paul Manafort</u>, Trump’s former campaign chair!`,
+    `This witch is <u>Michael Cohen</u>, Trump’s former lawyer!`,
+    'This coven of witches is a group of <u>12 GRU officers</u> working at the behest of the Kremlin.',
+    `This witch is <u>George Papadopoulus</u>, former foreign policy advisor to Trump's 2016 campaign.`,
+    `This witch is <u>Rick Gates</u>, old pal of Manafort who flipped on him in Federal Court.`,
+    `This gaggle of witches,often described as a "Russian Troll Farm", goes by the official name the <u>Internet Research Agency</u>.`,
 ];
 
 var answerImage = [
@@ -63,6 +63,8 @@ var triviaGame = {
     time: 20,
 
     drawQuestion: function () {
+        $(`#game-name`).attr(`class`,`hide`)
+            .empty();
         $(`#logo`).attr(`class`,`hide`)
                 .attr(`src`,``);
         $(`#play-button`).empty()
@@ -90,7 +92,7 @@ var triviaGame = {
         var correctAnswer = $(`<div>`);
         var correctImage = $(`<img>`);
         correctAnswer.attr(`id`, `answer-description`)
-                    .text(answerDescription[questionIndex-1]);
+                    .html(answerDescription[questionIndex-1]);
         correctImage.attr('src',answerImage[questionIndex-1]);
         $(`#dialogue-box`).append(correctAnswer);
         $(`#drop-box`).append(correctImage);
@@ -111,7 +113,7 @@ var triviaGame = {
     },
 
     timer: function () {
-        $(`#timer`).text(`00:15`)
+        $(`#timer`).text(`00:20`)
                     .attr(`class`,``);
         intervalId = setInterval(triviaGame.count, 1000);
     },
@@ -225,6 +227,8 @@ var triviaGame = {
         $(`#question-box`).empty()
             .attr(`class`,`hide`);
         $(`#answer-box`).empty();
+        $(`#game-name`).text(`WITCH HUNT`)
+            .attr(`class`,``)
         $(`#dialogue-box`).html(`
             <h2>Game Over</h2>
             <p>You identified ${correctCount} out of ${questions.length} witches.</p>  `

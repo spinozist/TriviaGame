@@ -19,8 +19,9 @@ h2 {
 }
 
 #logo {
-    width: 30%;
-    margin-bottom: -20px;
+    width: 20%;
+    margin-top: 20px;
+    margin-bottom: -30px;
 }
 
 img {
@@ -32,9 +33,12 @@ img {
 }
 
 #timer {
+    width: 150px;
     font-size: 60px;
-    color: rgb(236, 174, 40);
-    margin-top: -30px;
+    color: black;
+    background-color: orange;
+    margin: -10px auto 15px auto;
+    border-radius: 5px;
 }
 
 #game-name,
@@ -87,12 +91,12 @@ img {
     padding: 10px;
     background-color: darkslategrey;
     opacity: .75;
-    color: white;
+    color: beige;
     font-size: 20px;
     border-radius: 5px;
     border-color: none;
     width: 150px;
-    margin: 40px 0px 30px 0px;
+    margin: 30px 0px 30px 0px;
 
 }
 
@@ -100,7 +104,6 @@ img {
     opacity: 1;
     border-color: orange;
     color: orange;
-
 }
 
 .answer-button {
@@ -109,7 +112,7 @@ img {
     background-color: darkslategrey;
     border-color: darkslategrey;
     opacity: .8;
-    color: white;
+    color: beige;
     font-size: 28px;
     border-radius: 5px;
     margin: 10px auto 0px auto;
@@ -122,7 +125,6 @@ img {
     color: orange
 }
 
-
 #drop-box {
     width: 48%;
     margin: auto;
@@ -134,8 +136,6 @@ img {
     color: darkslategrey;
     font-size: 30px;
 }
-
-
 
 #answer-description {
     margin-top: 10px;
@@ -156,6 +156,33 @@ img {
         font-size: 50px;
     }
 
+    .answer-button {
+        width: 95%;
+        opacity: 1;
+        border-color: orange;
+        color: orange;
+    }
+
+    #play-button {
+        opacity: 1;
+        border-color: orange;
+        color: orange;
+    }
+
+    .answer-button:click {
+        width: 95%;
+        opacity: .8;
+        border-color: darkslategrey;
+        color: beige;
+    }
+
+    #play-button:click {
+        opacity: 1;
+        opacity: .8;
+        border-color: darkslategrey;
+        color: beige;
+    }
+
     #answer-box {
         width: 95%;
     }
@@ -164,8 +191,8 @@ img {
         width: 95%;
     }
 
-    #game-logo {
-        font-size: 55px;
+    #game-name {
+        font-size: 60px;
     }
 
 }
