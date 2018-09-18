@@ -1,18 +1,18 @@
 window.onload = function () {
-    $(`#play-button`).on(`click`, triviaGame.hidePlayButton);
-    $(`#play-button`).on(`click`, triviaGame.timer);
-    $(`#play-button`).on(`click`, triviaGame.drawQuestion);
-    $(`#play-button`).on(`click`, triviaGame.drawAnswers);
-    $(`#play-button`).on(`click`, triviaGame.drawScore);
+    $(`#play-button`).on(`click`, triviaGame.hidePlayButton)
+        .on(`click`, triviaGame.timer)
+        .on(`click`, triviaGame.drawQuestion)
+        .on(`click`, triviaGame.drawAnswers)
+        .on(`click`, triviaGame.drawScore);
 };
 
 var questions = [
-    `[This witch] was indicted on a total of 25 different counts [...], related mainly to his past work for Ukrainian politicians and his finances. He had two trials scheduled, and the first ended in a conviction on eight counts of financial crimes. To avert the second trial, [he] struck a plea deal [...] in September 2018.`,
-    `[This witch] pleaded guilty to 8 counts — tax and bank charges, related to his finances and taxi business, and campaign finance violations, related to hush money payments to women who alleged affairs with Donald Trump.`,
-    `[This gaggle of witches] were charged with crimes related to the hacking and leaking of leading Democrats’ emails in 2016.`,
-    `[This witch ]was arrested in July 2017 and pleaded guilty last October to making false statements to the FBI.`,
-    `[This witch], former Trump campaign aide and [another witch's] longtime junior business partner, was indicted on similar charges to [another witch]. [I]n February he agreed to a plea deal [...], pleading guilty to just one false statements charge and one conspiracy charge.`,
-    `[This coven of witches and their financiers] were indicted on conspiracy charges, with some also being accused of identity theft. The charges related to a [...] propaganda effort designed to interfere with the 2016 campaign.`,
+    `This witch was indicted on a total of 25 different counts, related mainly to his past work for Ukrainian politicians and his finances. Of his two trials, the first ended in a conviction on eight counts of financial crimes, and to avert the second, he struck a plea deal in September of 2018.`,
+    `This witch pleaded guilty to 8 counts — tax and bank charges, related to his finances and taxi business, and campaign finance violations, related to hush money payments to women who alleged affairs with Donald Trump.`,
+    `This gaggle of witches were charged with crimes related to the hacking and leaking of leading Democrats’ emails in 2016.`,
+    `This witch was arrested in July 2017 and pleaded guilty last October to making false statements to the FBI.`,
+    `This witch was a former Trump campaign aide and another witch's longtime junior business partner. In February 2018, he agreed to a plea deal, pleading guilty to just one false statements charge and one conspiracy charge.`,
+    `This coven of witches and their financiers were indicted on conspiracy charges, with some also being accused of identity theft. The charges related to a propaganda effort designed to interfere with the 2016 campaign.`,
 ];
 
 var answers = [
@@ -39,7 +39,7 @@ var answerDescription = [
     'This coven of witches is a group of <u>12 GRU officers</u> working at the behest of the Kremlin.',
     `This witch is <u>George Papadopoulus</u>, former foreign policy advisor to Trump's 2016 campaign.`,
     `This witch is <u>Rick Gates</u>, old pal of Manafort who flipped on him in Federal Court.`,
-    `This gaggle of witches,often described as a "Russian Troll Farm", goes by the official name the <u>Internet Research Agency</u>.`,
+    `This "Russian Troll Farm" goes by the official-sounding name the <u>Internet Research Agency</u>.`,
 ];
 
 var answerImage = [
@@ -49,7 +49,6 @@ var answerImage = [
     `assets/images/george-p.jpg`,
     `assets/images/ricky-g.jpeg`,
     `assets/images/IRA.jpg`,
-
 ];
 
 var questionIndex = 0;
@@ -70,10 +69,10 @@ var triviaGame = {
             .empty();
         $(`#play-button`).empty()
             .attr(`class`,`hide`);
-        $('#drop-box').attr(`class`,`hide`);
+        $(`#drop-box`).empty()
+            .attr(`class`,`hide`);
         $(`#dialogue-box`).text(`Which witch is this?`)
             .attr(`class`,``);
-        $(`#drop-box`).empty();
         $(`#question-box`).html(questions[questionIndex])
                         .attr(`class`,``);
     },
@@ -83,31 +82,33 @@ var triviaGame = {
         if (questionIndex === 1) {
             es = "";
         };
-        $(`#score-board`).text(`You identified ${correctCount} out of ${questionIndex} witch${es}.`)
+        $(`#score-board`).text(`You've identified ${correctCount} out of ${questionIndex} witch${es} so far.`)
                         .attr(`class`,``);
     },
 
     drawCorrectAnswer: function () {
+        setTimeout(function (){
         $(`#question-box`).empty()
             .attr(`class`, `hide`);
         var correctAnswer = $(`<div>`);
         var correctImage = $(`<img>`);
         correctAnswer.attr(`id`, `answer-description`)
-                    .html(answerDescription[questionIndex-1]);
+            .html(answerDescription[questionIndex-1]);
         correctImage.attr('src',answerImage[questionIndex-1]);
         $(`#dialogue-box`).append(correctAnswer);
-        $(`#drop-box`).append(correctImage);
-        $('#drop-box').attr(`class`,``);
+        $(`#drop-box`).append(correctImage)
+            .attr(`class`,``);
+        }, 500);
     },
 
     drawAnswers: function () {
         for (i = 0; i < 4; i++) {
             var button = $(`<button>`);
-            button.text(answers[questionIndex][i]);
-            button.attr(`class`, `answer-button`);
-            button.attr(`value`, answerKey[questionIndex][i]);
-            $(`#answer-box`).append(button);
-            $(`#answer-box`).attr(`class`,``);
+            button.text(answers[questionIndex][i])
+                .attr(`class`, `answer-button`)
+                .attr(`value`, answerKey[questionIndex][i]);
+            $(`#answer-box`).append(button)
+                .attr(`class`,``);
         };
 
         $(`.answer-button`).on(`click`, triviaGame.evaluate);
@@ -126,8 +127,7 @@ var triviaGame = {
         if (triviaGame.time < 0 & questionIndex === questions.length - 1) {
             questionIndex++;
             clearInterval(intervalId);
-            $(`#dialogue-box`).attr(`class`,'background');
-            $(`#dialogue-box`).text(`Times up!`);
+            $(`#dialogue-box`).text(`Time's up!`);
             $(`.answer-button`).attr(`class`, `hide`);
             triviaGame.drawScore();
             triviaGame.drawCorrectAnswer();
@@ -139,7 +139,7 @@ var triviaGame = {
         else if (triviaGame.time < 0) {
             questionIndex++;
             clearInterval(intervalId);
-            $(`#dialogue-box`).text(`Times up for this question!`);
+            $(`#dialogue-box`).text(`Time's up for this question!`);
             $(`.answer-button`).attr(`class`, `hide`);
             triviaGame.drawScore();
             triviaGame.drawCorrectAnswer();
@@ -180,14 +180,15 @@ var triviaGame = {
                 setTimeout(function () {
                     triviaGame.endGame();
                 },
-                    5000)            };
+                    5000)};
 
         } else {
 
             if (this.value === `1`) {
-
                 $(`#dialogue-box`).text(`Great job!`);
+                setTimeout(function(){ 
                 $(`.answer-button`).attr(`class`, `hide`)
+            }, 500);
                 triviaGame.drawCorrectAnswer();
                 correctCount++;
                 triviaGame.drawScore();
