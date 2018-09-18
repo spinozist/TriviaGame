@@ -9,27 +9,48 @@ window.onload = function () {
 var questions = [
     `[This witch] was indicted on a total of 25 different counts [...], related mainly to his past work for Ukrainian politicians and his finances. He had two trials scheduled, and the first ended in a conviction on eight counts of financial crimes. To avert the second trial, [he] struck a plea deal [...] in September 2018.`,
     `[This witch] pleaded guilty to 8 counts — tax and bank charges, related to his finances and taxi business, and campaign finance violations, related to hush money payments to women who alleged affairs with Donald Trump.`,
+    `[This gaggle of witches] were charged with crimes related to the hacking and leaking of leading Democrats’ emails in 2016.`,
+    `[This witch ]was arrested in July 2017 and pleaded guilty last October to making false statements to the FBI.`,
+    `[This witch], former Trump campaign aide and [another witch's] longtime junior business partner, was indicted on similar charges to [another witch]. [I]n February he agreed to a plea deal [...], pleading guilty to just one false statements charge and one conspiracy charge.`,
+    `[This coven of witches and their financiers] were indicted on conspiracy charges, with some also being accused of identity theft. The charges related to a [...] propaganda effort designed to interfere with the 2016 campaign.`,
 ];
 
 var answers = [
-    [`Paul Manifort`, `Michael Cohen`, `Mike Pence`, `David Duke`],
+    [`Paul Manafort`, `Michael Cohen`, `Mike Pence`, `David Duke`],
     [`Chuck Grassley`, `Joe Arpaio`, `Harvey Weinstein`, `Michael Cohen`],
+    [`The Band U2`,`12 Russian GRU officers`,`Matt Damon & Ben Affleck`,`The Mormon Tabernacle Boys' Choir`],
+    [`George Papadopoulos`,`Fancy Bear`,`Don Jr.`,`Sarah Huckabee Sanders`],
+    [`Roger Stone`,`Jared Kushner`,`Rick Gates`,`Mr. Rogers`],
+    [`The Twelve Monkeys`,`Internet Research Agency`,`The MAGA Men`,`Anonymous`],
 ];
 
 var answerKey = [
     [1, 0, 0, 0],
     [0, 0, 0, 1],
+    [0, 1, 0, 0],
+    [1, 0, 0, 0],
+    [0, 0, 1, 0],
+    [0, 1, 0, 0],
 ];
 
 var answerDescription = [
     `This witch is Paul Manafort, Trump’s former campaign chair!`,
     `This witch is Michael Cohen, Trump’s former lawyer !`,
-]
+    'This coven of witches is a group of 12 GRU officers working at the behest of the Kremlin.',
+    `This witch is George Papadopoulus, former foreign policy advisory to Trump's 2016 campaign.`,
+    `This witch is Rick Gates, old pal of Manafort who flipped on him in Federal Court`,
+    `This gaggle of witches,often described as a "Russian Troll Farm", goes by the official name the Internet Research Agency.`,
+];
 
 var answerImage = [
     `assets/images/paul-manifort.jpg`,
     `assets/images/michael-cohen.jpg`,
-]
+    `assets/images/demo-hack.jpg`,
+    `assets/images/george-p.jpg`,
+    `assets/images/ricky-g.jpeg`,
+    `assets/images/IRA.jpg`,
+
+];
 
 var questionIndex = 0;
 
@@ -42,6 +63,8 @@ var triviaGame = {
     time: 15,
 
     drawQuestion: function () {
+        $(`#logo`).attr(`class`,`hide`)
+                .attr(`src`,``);
         $(`#play-button`).empty()
             .attr(`class`,`hide`);
         $('#drop-box').attr(`class`,`hide`);
@@ -106,7 +129,7 @@ var triviaGame = {
             setTimeout(function () {
                 triviaGame.endGame();
             },
-                3000)
+                5000)
         }
         else if (triviaGame.time < 0) {
             questionIndex++;
@@ -141,7 +164,7 @@ var triviaGame = {
                 setTimeout(function () {
                     triviaGame.endGame();
                 },
-                    3000)            }
+                    5000)            }
 
             else if (this.value === `0`) {
                 $(`#dialogue-box`).text(`Sorry wrong answer!`);
@@ -152,7 +175,7 @@ var triviaGame = {
                 setTimeout(function () {
                     triviaGame.endGame();
                 },
-                    3000)            };
+                    5000)            };
 
         } else {
 
@@ -190,10 +213,13 @@ var triviaGame = {
     },
 
     endGame: function () {
+        $(`#logo`).attr(`class`,``)
+        .attr(`src`,`assets/images/Logo.png`);
         $(`#timer`).empty();
         $(`#drop-box`).empty()
             .attr(`class`,`hide`);
-        $(`#score-board`).empty();
+        $(`#score-board`).empty()
+            .attr(`class`,`hide`)
         $(`#question-box`).empty()
             .attr(`class`,`hide`);
         $(`#answer-box`).empty();

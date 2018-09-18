@@ -10,7 +10,7 @@ Paul Manafort//
 [This witch] was indicted on a total of 25 different counts [...], related mainly to his past work for Ukrainian politicians and his finances. He had two trials scheduled, and the first ended in a conviction on eight counts of financial crimes. To avert the second trial, [he] struck a plea deal [...] in September 2018.
 
 Rick Gates////
-[This witch], former Trump campaign aide and [another witch's] longtime junior business partner, was indicted on similar charges to [another witch]. [I]n February he agreed to a plea deal with Mueller’s team,pleading guilty to just one false statements charge and one conspiracy charge.
+[This witch], former Trump campaign aide and [another witch's] longtime junior business partner, was indicted on similar charges to [another witch]. [I]n February he agreed to a plea deal with Mueller’s team, pleading guilty to just one false statements charge and one conspiracy charge.
 
 Internet Research Agency//
 [This coven of witches and their financiers] were indicted on conspiracy charges, with some also being accused of identity theft. The charges related to a [...] propaganda effort designed to interfere with the 2016 campaign. 
