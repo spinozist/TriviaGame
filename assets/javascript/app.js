@@ -87,7 +87,6 @@ var triviaGame = {
     },
 
     drawCorrectAnswer: function () {
-        setTimeout(function (){
         $(`#question-box`).empty()
             .attr(`class`, `hide`);
         var correctAnswer = $(`<div>`);
@@ -98,7 +97,6 @@ var triviaGame = {
         $(`#dialogue-box`).append(correctAnswer);
         $(`#drop-box`).append(correctImage)
             .attr(`class`,``);
-        }, 500);
     },
 
     drawAnswers: function () {
@@ -111,7 +109,7 @@ var triviaGame = {
                 .attr(`class`,``);
         };
 
-        $(`.answer-button`).on(`click`, triviaGame.evaluate);
+        $(`.answer-button`).on(`click`, triviaGame.evaluate)
     },
 
     timer: function () {
@@ -180,15 +178,14 @@ var triviaGame = {
                 setTimeout(function () {
                     triviaGame.endGame();
                 },
-                    5000)};
+                    5000)            };
 
         } else {
 
             if (this.value === `1`) {
+
                 $(`#dialogue-box`).text(`Great job!`);
-                setTimeout(function(){ 
                 $(`.answer-button`).attr(`class`, `hide`)
-            }, 500);
                 triviaGame.drawCorrectAnswer();
                 correctCount++;
                 triviaGame.drawScore();
